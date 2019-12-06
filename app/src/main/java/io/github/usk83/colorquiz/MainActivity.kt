@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     private val question = Question()
     private var score = 0
+    private var toast: Toast? = null
     private lateinit var scoreLabel: TextView
     private lateinit var colorButtons: Array<Button>
     private lateinit var colorLabel: TextView
@@ -56,7 +57,9 @@ class MainActivity : AppCompatActivity() {
         }
         score += point
         scoreLabel.text = score.toString()
-        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+        toast?.cancel()
+        toast = Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT)
+        toast?.show()
 
         setQuestion()
     }
