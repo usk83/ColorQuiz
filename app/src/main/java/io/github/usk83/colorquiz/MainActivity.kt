@@ -49,7 +49,11 @@ class MainActivity : AppCompatActivity() {
     fun onClick(view: View) {
         val color = (view.background as? ColorDrawable)?.color ?: 0
 
-        val (message, point) = if (question.checkAnswer(color)) "Right!" to 1 else "Wrong." to -1
+        val (message, point) = if (question.checkAnswer(color)) {
+            getString(R.string.right_answer_message) to 1
+        } else {
+            getString(R.string.wrong_answer_message) to -1
+        }
         score += point
         scoreLabel.text = score.toString()
         Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
