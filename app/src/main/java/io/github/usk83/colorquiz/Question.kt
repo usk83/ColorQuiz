@@ -4,7 +4,9 @@ class Question {
     private lateinit var correctColor: Color
 
     fun getQuestion(size: Int): Pair<Color, List<Color>> {
-        if (size > Color.values().size) {
+        if (size <= 0) {
+            throw IllegalArgumentException("`size` must be greater than 0")
+        } else if (size > Color.values().size) {
             throw IllegalArgumentException("`size` is too big: there are not enough colors")
         }
 
