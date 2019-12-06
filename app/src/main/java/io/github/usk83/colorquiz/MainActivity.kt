@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClick(view: View) {
-        val color = (view.background as? ColorDrawable)?.color ?: 0
+        val color = (view.background as? ColorDrawable)?.color ?: return
 
         val (message, point) = if (question.checkAnswer(color)) {
             getString(R.string.right_answer_message) to 1
